@@ -7,7 +7,6 @@ object PigLatin:
             case s @ w                                                                              =>
                val cc = w.iterator.takeWhile(c => cs.contains(c) && (c != 'y' || w.startsWith("y"))).toList.mkString
                s.replaceFirst(cc, "") match
-                  case s"u$s" if cs.endsWith("q") => s"$s${cs}uay"
-                  case s                          => s"$s${cs}ay"
-
+                  case s"u$s" if cc.endsWith("q") => s"$s${cc}uay"
+                  case s                          => s"$s${cc}ay"
          }.mkString(" ")
